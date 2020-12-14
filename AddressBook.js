@@ -190,6 +190,7 @@ while(input != 0){
     console.log("9. Search Person In State");
     console.log("10. Count Contacts By City");
     console.log("11. Count Contacts By State");
+    console.log("12. Sort By Name");
     console.log("0. Exit");
     input = prompt("Enter Your Choice: ");
     input = parseInt(input);
@@ -227,6 +228,8 @@ while(input != 0){
                 break;
         case 11: let stateCount = prompt("Enter state");
                 countByState(stateCount);
+                break;
+        case 12: console.log(contactBookArray.sort((a,b)=>a.firstName.localeCompare(b.firstName)));
                 break;
         case 0: input = 0;
                 break;
