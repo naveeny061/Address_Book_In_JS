@@ -133,6 +133,22 @@ function deleteContact(firstName){
     if(flag == 0)
         console.log("Contact Not Present ");
 }
+function searchByCity(city){
+    let contacts = new Array();
+    contacts = contactBookArray.filter(contact => contact.city == city)
+    if(contacts.length == 0)
+        console.log("No contact present");
+    else
+        console.log("Contact: ",contacts);
+}
+function searchByState(state){
+    let contacts =new Array(); 
+    contacts = contactBookArray.filter(contact => contact.state == state)
+    if(contacts.length == 0)
+        console.log("No contact present");
+    else
+        console.log("Contact: ",contacts);
+}
 let input = 1;
 let firstName="null";
 while(input != 0){
@@ -141,6 +157,8 @@ while(input != 0){
     console.log("3. Show Contacts");
     console.log("4. Delete Contacts");
     console.log("5. Count Contacts");
+    console.log("6. Search Contacts By City");
+    console.log("7. Search Contacts By State");
     console.log("0. Exit");
     input = prompt("Enter Your Choice: ");
     input = parseInt(input);
@@ -156,6 +174,12 @@ while(input != 0){
                 deleteContact(firstName);
                 break;
         case 5: console.log("Number of Contacts: "+contactBookArray.reduce(contact=>contact + 1, 0));
+                break;
+        case 6: let city = prompt("Enter city");
+                searchByCity(city);
+                break;
+        case 7: let state = prompt("Enter state");
+                searchByState(state);
                 break;
         case 0: input = 0;
                 break;
