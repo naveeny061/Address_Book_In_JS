@@ -132,10 +132,11 @@ function deleteContact(firstName){
 let input = 1;
 let firstName="null";
 while(input != 0){
-    console.log("1. Add Contact");
-    console.log("2. Edit Contact");
-    console.log("3. Show Contact");
-    console.log("4. Delete Contact");
+    console.log("1. Add Contacts");
+    console.log("2. Edit Contacts");
+    console.log("3. Show Contacts");
+    console.log("4. Delete Contacts");
+    console.log("5. Count Contacts");
     console.log("0. Exit");
     input = prompt("Enter Your Choice: ");
     input = parseInt(input);
@@ -149,6 +150,8 @@ while(input != 0){
                 break;
         case 4: firstName = prompt("Enter first name for edit");
                 deleteContact(firstName);
+                break;
+        case 5: console.log("Number of Contacts: "+contactBookArray.reduce(contact=>contact + 1, 0));
                 break;
         case 0: input = 0;
                 break;
