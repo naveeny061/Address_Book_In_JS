@@ -57,6 +57,10 @@ class Contact{
 function addContact(){
     let firstName = prompt("Enter Firstname: ");
     let lastName = prompt("Enter Lastname: ");
+    if(contactBookArray.find((contact)=>(contact.firstName+" "+contact.lastName) == (firstName+" "+lastName))){   
+        console.log("Contact is already present");
+        return;
+    }
     let address = prompt("Enter Address: ");
     let city = prompt("Enter City name: ");
     let state = prompt("Enter State name: ");
