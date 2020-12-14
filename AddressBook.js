@@ -149,8 +149,25 @@ function searchByState(state){
     else
         console.log("Contact: ",contacts);
 }
+function searchByCity(city,firstName,lastName){
+    let contacts = new Array();
+    contacts = contactBookArray.filter(contact => contact.city == city && contact.firstName == firstName && contact.lastName == lastName)
+    if(contacts.length == 0)
+        console.log("No contact present");
+    else
+        console.log("Contact: ",contacts);
+}
+function searchByState(state,firstName,lastName){
+    let contacts =new Array(); 
+    contacts = contactBookArray.filter(contact => contact.state == state && contact.firstName == firstName && contact.lastName == lastName)
+    if(contacts.length == 0)
+        console.log("No contact present");
+    else
+        console.log("Contact: ",contacts);
+}
 let input = 1;
-let firstName="null";
+let firstName = null;
+let lastName = null;
 while(input != 0){
     console.log("1. Add Contacts");
     console.log("2. Edit Contacts");
@@ -159,6 +176,8 @@ while(input != 0){
     console.log("5. Count Contacts");
     console.log("6. Search Contacts By City");
     console.log("7. Search Contacts By State");
+    console.log("8. Search Person In City");
+    console.log("9. Search Person In State");
     console.log("0. Exit");
     input = prompt("Enter Your Choice: ");
     input = parseInt(input);
@@ -180,6 +199,16 @@ while(input != 0){
                 break;
         case 7: let state = prompt("Enter state");
                 searchByState(state);
+                break;
+        case 8: let citySearch = prompt("Enter city");
+                firstName = prompt("Enter first name");
+                lastName = prompt("Enter last name");
+                searchByCity(citySearch,firstName,lastName);
+                break;
+        case 9: let stateSearch = prompt("Enter state");
+                firstName = prompt("Enter first name");
+                lastName = prompt("Enter last name");
+                searchByState(stateSearch,firstName,lastName);
                 break;
         case 0: input = 0;
                 break;
