@@ -165,6 +165,16 @@ function searchByState(state,firstName,lastName){
     else
         console.log("Contact: ",contacts);
 }
+function countByCity(city){
+    let contacts = new Array();
+    contacts = contactBookArray.filter(contact => contact.city == city)
+    console.log(contacts.length);
+}
+function countByState(state){
+    let contacts =new Array(); 
+    contacts = contactBookArray.filter(contact => contact.state == state)
+    console.log(contacts.length);
+}
 let input = 1;
 let firstName = null;
 let lastName = null;
@@ -178,6 +188,8 @@ while(input != 0){
     console.log("7. Search Contacts By State");
     console.log("8. Search Person In City");
     console.log("9. Search Person In State");
+    console.log("10. Count Contacts By City");
+    console.log("11. Count Contacts By State");
     console.log("0. Exit");
     input = prompt("Enter Your Choice: ");
     input = parseInt(input);
@@ -209,6 +221,12 @@ while(input != 0){
                 firstName = prompt("Enter first name");
                 lastName = prompt("Enter last name");
                 searchByState(stateSearch,firstName,lastName);
+                break;
+        case 10: let cityCount = prompt("Enter city");
+                countByCity(cityCount);
+                break;
+        case 11: let stateCount = prompt("Enter state");
+                countByState(stateCount);
                 break;
         case 0: input = 0;
                 break;
