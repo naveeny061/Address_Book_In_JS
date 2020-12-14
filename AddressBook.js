@@ -48,55 +48,12 @@ class Contact{
             this.email = email;
         }
     }
-}
-function validateFirstName(firstName) {
-    if (!NAME_REGEX.test(firstName)) {
-        console.log('Please enter first name in valid format.');
-        return false;
+    toString() {
+        return "First name: " + this.firstName + "\nLast name: " + this.lastName + "\nAddress: " + this.address + "\nCity: " +
+         this.city + "\nState: " + this.state + "\nZip: " + this.zip + "\nPhone number: " + this.phoneNumber + "\nEmail: " + this.email;
     }
 }
-function validateLastName(lastName) {
-    if (!NAME_REGEX.test(lastName)) {
-        console.log('Please enter last name in valid format.');
-        return false;
-    }
-}
-function validateAddress(address) {
-    if (!ADDRESS_REGEX.test(address)) {
-        console.log('Please enter address in valid format.');
-        return false;
-    }
-}
-function validateCity(city) {
-    if (!ADDRESS_REGEX.test(city)) {
-        console.log('Please enter city in valid format.');
-        return false;
-    }
-}
-function validateState(state) {
-    if (!ADDRESS_REGEX.test(state)) {
-        console.log('Please enter state in valid format.');
-        return false;
-    }
-}
-function validateZIP(zip) {
-    if (!ZIP_REGEX.test(zip)) {
-        console.log('Please enter zip in valid format.');
-        return false;
-    }
-}
-function validatePhoneNumber(phoneNumber) {
-    if (!PHONE_NUMBER_REGEX.test(phoneNumber)) {
-        console.log('Please enter phone number in valid format.');
-        return false;
-    }
-}
-function validateEmail(email) {
-    if (!EMAIL_REGEX.test(email)) {
-        console.log('Please enter email in valid format.');
-        return false;
-    }
-}
+
 function addContact(){
     let firstName = prompt("Enter Firstname: ");
     let lastName = prompt("Enter Lastname: ");
@@ -113,4 +70,73 @@ function addContact(){
         console.log(Exception);
     }
 }
-addContact();
+
+function editContact(firstName){
+    let contact;
+    for(let i = 0; i < contactBookArray.length; i++){
+        if(contactBookArray[i].firstName == firstName){
+            contact = contactBookArray[i];
+            let input = 1;
+            while(input != 0){
+                console.log("1. Address ");
+                console.log("2. City ");
+                console.log("3. State");
+                console.log("4. Zip");
+                console.log("5. Phone number");
+                console.log("6. Email ");
+                console.log("0. Exit ");
+                input = prompt("Enter Your Choice: ");
+                input = parseInt(input);
+                switch (input) {
+                    case 1: let address_edit = prompt("Enter the address: ");
+                            contact.address = address_edit;
+                            break;
+                    case 2: let city_edit = prompt("Enter the city: ");
+                            contact.city = city_edit;
+                            break;
+                    case 3: let state_edit = prompt("Enter the state: ");
+                            contact.state = state_edit;
+                            break;
+                    case 4: let zip_edit = prompt("Enter the pincode: ");
+                            contact.zip = zip_edit;
+                            break;
+                    case 5: let phone_edit = prompt("Enter the phone number: ");
+                            contact.phoneNumber = phone_edit;
+                            break;
+                    case 6: let mail_edit = prompt("Enter the email: ");
+                            contact.email = mail_edit;
+                            break;
+                    case 0: input = 0;
+                    default: console.log("Choose Correct Option");
+                }
+            }
+        }
+        else
+            console.log("Contact is not present");
+    }
+}
+function show(){
+    for(let i = 0; i < contactBookArray.length; i++)
+        console.log(contactBookArray[i].toString(),"\n");
+}
+let input = 1;
+while(input != 0){
+    console.log("1. Add Contact");
+    console.log("2. Edit Contact");
+    console.log("3. Show Contact");
+    console.log("0. Exit");
+    input = prompt("Enter Your Choice: ");
+    input = parseInt(input);
+    switch(input){
+        case 1: addContact();
+                break;
+        case 2: let firstName = prompt("Enter first name for edit");
+                editContact(firstName);
+                break;
+        case 3: show();
+                break;
+        case 0: input = 0;
+                break;
+        default : console.log("You have enter wrong choice");
+    }
+}
