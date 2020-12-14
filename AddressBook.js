@@ -175,6 +175,22 @@ function countByState(state){
     contacts = contactBookArray.filter(contact => contact.state == state)
     console.log(contacts.length);
 }
+function sortByCity(){
+    contactBookArray.sort(function(a, b) { return a.city.localeCompare(b.city)});
+    for(let i = 0; i < contactBookArray.length; i++)
+        console.log(contactBookArray[i].toString(),"\n");
+}
+function sortByState(){
+    contactBookArray.sort(function(a, b) { return a.state.localeCompare(b.state)});
+    for(let i = 0; i < contactBookArray.length; i++)
+        console.log(contactBookArray[i].toString(),"\n");
+}
+function sortByZip(){
+    contactBookArray.sort(function(a, b) { return parseInt(a.zip) - parseInt(b.zip)});
+    for(let i = 0; i < contactBookArray.length; i++)
+        console.log(contactBookArray[i].toString(),"\n");
+}
+
 let input = 1;
 let firstName = null;
 let lastName = null;
@@ -191,6 +207,9 @@ while(input != 0){
     console.log("10. Count Contacts By City");
     console.log("11. Count Contacts By State");
     console.log("12. Sort By Name");
+    console.log("13. Sort By City");
+    console.log("14. Sort By State");
+    console.log("15. Sort By Zip");
     console.log("0. Exit");
     input = prompt("Enter Your Choice: ");
     input = parseInt(input);
@@ -230,6 +249,12 @@ while(input != 0){
                 countByState(stateCount);
                 break;
         case 12: console.log(contactBookArray.sort((a,b)=>a.firstName.localeCompare(b.firstName)));
+                break;
+        case 13: sortByCity();
+                break;
+        case 14: sortByState();
+                break;
+        case 15: sortByZip();
                 break;
         case 0: input = 0;
                 break;
