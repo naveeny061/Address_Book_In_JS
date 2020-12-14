@@ -119,21 +119,36 @@ function show(){
     for(let i = 0; i < contactBookArray.length; i++)
         console.log(contactBookArray[i].toString(),"\n");
 }
+function deleteContact(firstName){
+    let flag = 0;
+    for(let i = 0; i < contactBookArray.length; i++)
+        if(contactBookArray[i].firstName == firstName){
+            contactBookArray.splice(i, 1);
+            flag = 1;
+        }
+    if(flag == 0)
+        console.log("Contact Not Present ");
+}
 let input = 1;
+let firstName="null";
 while(input != 0){
     console.log("1. Add Contact");
     console.log("2. Edit Contact");
     console.log("3. Show Contact");
+    console.log("4. Delete Contact");
     console.log("0. Exit");
     input = prompt("Enter Your Choice: ");
     input = parseInt(input);
     switch(input){
         case 1: addContact();
                 break;
-        case 2: let firstName = prompt("Enter first name for edit");
+        case 2: firstName = prompt("Enter first name for edit");
                 editContact(firstName);
                 break;
         case 3: show();
+                break;
+        case 4: firstName = prompt("Enter first name for edit");
+                deleteContact(firstName);
                 break;
         case 0: input = 0;
                 break;
